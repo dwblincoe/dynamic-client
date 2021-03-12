@@ -2,9 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/lib/integration/react";
 
 import reportWebVitals from "./reportWebVitals";
 import theme from "./styles/theme";
+import { store, persistor } from "./redux/store";
 
 import App from "./pages/app";
 
@@ -12,11 +15,15 @@ import "./index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
