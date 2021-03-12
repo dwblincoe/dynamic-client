@@ -20,5 +20,17 @@ export default createMuiTheme({
       main: colors.blue,
     },
   },
-  overrides: {},
+  overrides: {
+    MuiButton: {
+      containedSecondary: {
+        color: colors.white
+      }
+    },
+    MuiLink: {
+      root: {
+        cursor: "pointer",
+        fontFamily: 'Roboto, Raleway'
+      }
+    }
+  },
 });
